@@ -1,0 +1,274 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SureshSite.Account.Site" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Suresh</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .modal-header, h4, .close {
+            background-color: #5cb85c;
+            color: white !important;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .modal-footer {
+            background-color: #f9f9f9;
+        }
+
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px;
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Logo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#myModalsignin" data-toggle="modal" data-target="#myModalsignin"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                      
+                    </ul>
+
+                    <!-- Modal Login-->
+                    <div class="modal fade" id="myModalsignin" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 style="color: red;"><span class="glyphicon glyphicon-lock"></span>Login</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <%--<form role="form">--%>
+                                        <div class="form-group">
+                                            <label for="usrname"><span class="glyphicon glyphicon-user"></span>Username</label>
+                                            <asp:TextBox ID="txtUserName" class="form-control" placeholder="Enter password" runat="server"></asp:TextBox>
+                                            <%--<input type="text" class="form-control" id="usrname" placeholder="Enter email">--%>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>Password</label>
+                                            <asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="Enter password" TextMode="Password"></asp:TextBox>
+                                            <%-- <input type="text" class="form-control" id="psw" placeholder="Enter password">--%>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <asp:CheckBox ID="chkRememberme" Text="" runat="server" />Remember me</label>
+                                            <%--<label><input type="checkbox" value="" checked>Remember me</label>--%>
+                                        </div>
+                                        <asp:Button ID="btnLogin" runat="server" class="btn btn-default btn-success btn-block" Text="Login" OnClick="btnLogin_Click"></asp:Button>
+                                        <%-- <asp:Button ID="btnLogin" runat="server" class="btn btn-default btn-success btn-block "></asp:Button>--%>
+                                        <%--<button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>--%>
+                                   <%-- last edited </form>--%>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+                                    <p>Not a member? <a id="signup1" href="#myModalreg" data-toggle="modal" data-target="#myModalreg">Sign Up</a></p>
+                                    <p>Forgot <a id="forgot1" href="#myModalforgot" data-toggle="modal" data-target="#myModalforgot">Password?</a></p>
+                                </div>
+                            </div>
+
+                            <!--Model Contenc-->
+                        </div>
+                    </div>
+                    <!--Modal -->
+                    <!--Modal Registration -->
+                    <div class="modal fade" id="myModalreg" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 style="color: red;"><span class="glyphicon glyphicon-lock"></span>Register</h4>
+                                </div>
+                                <div class="modal-body">
+                                   <%-- <form role="form">--%>
+                                        <div class="form-group">
+                                            <label for="usrname"><span class="glyphicon glyphicon-user"></span>Username</label>
+                                            <asp:TextBox ID="txtRegUser" class="form-control" placeholder="Enter UserName" runat="server"></asp:TextBox>
+                                            <%--<input type="text" class="form-control" id="usrname" placeholder="Enter email">--%>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>Password</label>
+                                            <asp:TextBox ID="txtRegpwd1" class="form-control" runat="server" placeholder="Enter password" TextMode="Password"></asp:TextBox>
+                                            <%-- <input type="text" class="form-control" id="psw" placeholder="Enter password">--%>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>Password</label>
+                                            <asp:TextBox ID="txtRePassword" class="form-control" runat="server" placeholder="Re-Enter password" TextMode="Password"></asp:TextBox>
+                                            <%-- <input type="text" class="form-control" id="psw" placeholder="Enter password">--%>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email"><span class="glyphicon glyphicon-envelope"></span>Email</label>
+                                            <asp:TextBox ID="txtRegEmail" class="form-control" placeholder="Enter Email" runat="server"></asp:TextBox>
+                                            <%--<input type="text" class="form-control" id="usrname" placeholder="Enter email">--%>
+                                        </div>
+                                    <asp:Button ID="btnRegister" runat="server" class="btn btn-default btn-success btn-block" Text="Register" OnClick="btnRegister_Click"></asp:Button>
+                                        <%-- <asp:Button ID="btnLogin" runat="server" class="btn btn-default btn-success btn-block "></asp:Button>--%>
+                                        <%--<button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>--%>
+                                   <%-- </form>--%>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+                                    <p>Already Member? <a id="signin2" href="#myModalsignin" data-toggle="modal" data-target="#myModalsignin">Sign in</a></p>
+                                    <p>Forgot <a id="forgot2" href="#myModalforgot" data-toggle="modal" data-target="#myModalforgot">Password?</a></p>
+
+                                    
+                                </div>
+                            </div>
+
+                            <!--Model Contenc-->
+                        </div>
+                    </div>
+                    <!--End Model Registration Modal -->
+                    <!--Modal Forgot Password-->
+                    <div class="modal fade" id="myModalforgot" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 style="color: red;"><span class="glyphicon glyphicon-lock"></span>Forgot Password</h4>
+                                </div>
+                                <div class="modal-body">
+                                   
+                                        <div class="form-group">
+                                            <label for="usrname"><span class="glyphicon glyphicon-user"></span>Username</label>
+                                            <asp:TextBox ID="txtForgotUsername" class="form-control" placeholder="Enter UserName" runat="server"></asp:TextBox>
+                                            <%--<input type="text" class="form-control" id="usrname" placeholder="Enter email">--%>
+                                        </div>
+
+                                        <asp:Button ID="btnForgot" runat="server" class="btn btn-default btn-success btn-block" Text="Reset" OnClick="btnForgot_Click"></asp:Button>
+                                        <%-- <asp:Button ID="btnLogin" runat="server" class="btn btn-default btn-success btn-block "></asp:Button>--%>
+                                        <%--<button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>--%>
+                                  
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+                                    <p>Not a member? <a id="signup3" href="#myModalreg" data-toggle="modal" data-target="#myModalreg">Sign Up</a></p>
+                                    <p>Already Member? <a id="signin3" href="#myModelsignin" data-toggle="modal" data-target="#myModalsignin">Sign in</a></p>
+                                </div>
+                            </div>
+
+                            <!--Model Contenc-->
+                        </div>
+                    </div>
+                    <!--End Model Forgot Modal -->
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid text-center">
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+                    <p><a href="#">Link</a></p>
+                    <p><a href="#">Link</a></p>
+                    <p><a href="#">Link</a></p>
+                </div>
+                <div class="col-sm-8 text-left">
+                    <%--<form id="form1" runat="server">--%>
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+    </form>
+    </div>
+    <div class="col-sm-2 sidenav">
+        <div class="well">
+            <p>ADS</p>
+        </div>
+        <div class="well">
+            <p>ADS</p>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <footer class="container-fluid text-center">
+        <p>Suresh:Copyright@2016</p>
+    </footer>
+
+</body>
+<script>
+    $(document).ready(function () {
+
+        $("#signup1").click(function () {
+            $("#myModalsignin").modal("hide");
+
+        });
+        $("#signin2").click(function () {
+            $("#myModalreg").modal("hide");
+        });
+        $("#signin3").click(function () {
+            $("#myModalforgot").modal("hide");
+        });
+        $("#forgot1").click(function () {
+            $("#myModalsignin").modal("hide");
+        });
+        $("#signup3").click(function () {
+            $("#myModalforgot").modal("hide");
+        });
+        $("#forgot2").click(function () {
+            $("#myModalreg").modal("hide");
+        });
+    });
+
+</script>
+</html>
+
+
